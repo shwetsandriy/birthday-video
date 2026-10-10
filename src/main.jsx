@@ -41,8 +41,8 @@ function App() {
           )}
         </div>
 
-        <p className="hint">{hasVideo ? 'Натисніть на відео, щоб почати перегляд' : 'Або покладіть файл public/birthday-greeting.mp4 перед публікацією'}</p>
-        <div className="signature">З найкращими побажаннями <span>♥</span></div>
+        <p className="hint">{hasVideo ? 'Натисни на відео, щоб подивитися його' : 'Або покладіть файл public/birthday-greeting.mp4 перед публікацією'}</p>
+        <div className="signature">З любов'ю, ти найкраще що є в моєму житті <span>♥</span></div>
       </section>
     </main>
   )
