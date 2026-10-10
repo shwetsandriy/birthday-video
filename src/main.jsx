@@ -20,6 +20,19 @@ function App() {
       <div className="hearts" aria-hidden="true">
         <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
         <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+        <div className="heart-cloud">
+          {Array.from({ length: 24 }, (_, index) => (
+            <span
+              key={index}
+              style={{
+                '--x': `${(index * 37 + 5) % 96}%`,
+                '--y': `${(index * 29 + 7) % 94}%`,
+                '--size': `${1.15 + (index % 5) * 0.28}rem`,
+                '--delay': `${-(index % 8) * 0.38}s`,
+              }}
+            >♥</span>
+          ))}
+        </div>
       </div>
       <div className="confetti" aria-hidden="true">✦ &nbsp; ✧ &nbsp; ★ &nbsp; ✦ &nbsp; ✧</div>
 
