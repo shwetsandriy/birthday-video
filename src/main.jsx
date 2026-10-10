@@ -20,10 +20,6 @@ function App() {
       <div className="confetti" aria-hidden="true">✦ &nbsp; ✧ &nbsp; ★ &nbsp; ✦ &nbsp; ✧</div>
 
       <section className="greeting" aria-labelledby="page-title">
-        <p className="eyebrow">особливе привітання</p>
-        <h1 id="page-title">З днем народження!</h1>
-        <p className="wish">Нехай цей новий рік життя буде наповнений світлом, радістю та здійсненням найтепліших мрій.</p>
-
         <div className="video-card">
           {hasVideo && (
             <video
