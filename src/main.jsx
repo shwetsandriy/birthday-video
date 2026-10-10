@@ -19,6 +19,7 @@ function App() {
       <div className="glow glow-two" />
       <div className="hearts" aria-hidden="true">
         <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+        <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
       </div>
       <div className="confetti" aria-hidden="true">✦ &nbsp; ✧ &nbsp; ★ &nbsp; ✦ &nbsp; ✧</div>
 
