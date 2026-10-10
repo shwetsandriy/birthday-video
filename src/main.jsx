@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
 
@@ -15,6 +15,8 @@ function App() {
   const [hasVideo, setHasVideo] = useState(true)
   const [questionIndex, setQuestionIndex] = useState(0)
   const [quizMessage, setQuizMessage] = useState('')
+  const [hasStarted, setHasStarted] = useState(false)
+  const videoRef = useRef(null)
 
   const chooseVideo = (event) => {
     const file = event.target.files?.[0]
@@ -34,6 +36,16 @@ function App() {
   }
 
   const isUnlocked = questionIndex === questions.length
+
+  const startVideo = () => {
+    videoRef.current?.play().catch(() => {})
+  }
+
+  useEffect(() => {
+    if (isUnlocked && hasVideo) {
+      startVideo()
+    }
+  }, [isUnlocked, hasVideo])
 
   return (
     <main className="page-shell">
@@ -60,13 +72,18 @@ function App() {
         <div className="video-card">
           {hasVideo && (
             <video
+              ref={videoRef}
               className="video"
               src={videoSource}
               controls
               playsInline
+              onPlay={() => setHasStarted(true)}
               onError={() => setHasVideo(false)}
               aria-label="Відео-привітання з днем народження"
             />
+          )}
+          {hasVideo && !hasStarted && (
+            <button className="video-cover" onClick={startVideo} aria-label="Запустити відео" />
           )}
           {!hasVideo && (
             <label className="video-placeholder">
