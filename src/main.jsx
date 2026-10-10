@@ -2,9 +2,19 @@ import { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
 
+const questions = [
+  'Кохана, ти пам’ятаєш, як уперше відчула, що між нами щось особливе?',
+  'Якби я зараз притягнув тебе до себе й ніжно поцілував, ти б відповіла на поцілунок? 😘',
+  'Чи готова ти залишитися зі мною наодинці, щоб я подарував тобі незабутній вечір? 🔥',
+  'Чи довіришся ти мені, якщо я скажу, що підготував для тебе дещо дуже особливе? 😈',
+  'Кохана, ти готова дізнатися, який сюрприз я підготував для тебе на твій день народження? ❤️🎁',
+]
+
 function App() {
   const [videoSource, setVideoSource] = useState(`${import.meta.env.BASE_URL}birthday-greeting.mp4`)
   const [hasVideo, setHasVideo] = useState(true)
+  const [questionIndex, setQuestionIndex] = useState(0)
+  const [quizMessage, setQuizMessage] = useState('')
 
   const chooseVideo = (event) => {
     const file = event.target.files?.[0]
@@ -12,6 +22,18 @@ function App() {
     setVideoSource(URL.createObjectURL(file))
     setHasVideo(true)
   }
+
+  const answer = (isYes) => {
+    if (!isYes) {
+      setQuizMessage('Спробуй ще раз, кохана ♥')
+      return
+    }
+
+    setQuizMessage('')
+    setQuestionIndex((current) => current + 1)
+  }
+
+  const isUnlocked = questionIndex === questions.length
 
   return (
     <main className="page-shell">
@@ -24,6 +46,17 @@ function App() {
       <div className="confetti" aria-hidden="true">✦ &nbsp; ✧ &nbsp; ★ &nbsp; ✦ &nbsp; ✧</div>
 
       <section className="greeting" aria-labelledby="page-title">
+        {!isUnlocked ? (
+          <section className="quiz-card" aria-live="polite" aria-labelledby="quiz-question">
+            <p className="quiz-progress">Питання {questionIndex + 1} з {questions.length}</p>
+            <h1 id="quiz-question">{questions[questionIndex]}</h1>
+            <div className="quiz-actions">
+              <button className="yes-button" onClick={() => answer(true)}>Так ♥</button>
+              <button className="no-button" onClick={() => answer(false)}>Ні</button>
+            </div>
+            {quizMessage && <p className="quiz-message">{quizMessage}</p>}
+          </section>
+        ) : <>
         <div className="video-card">
           {hasVideo && (
             <video
@@ -46,6 +79,7 @@ function App() {
         </div>
 
         <p className="hint">{hasVideo ? 'Натисни на відео, щоб подивитися його' : 'Або покладіть файл public/birthday-greeting.mp4 перед публікацією'}</p>
+        </>}
         <div className="signature">З любов'ю, ти найкраще що є в моєму житті <span>♥</span></div>
       </section>
     </main>
