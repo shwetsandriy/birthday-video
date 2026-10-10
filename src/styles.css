@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root { font-family: Montserrat, sans-serif; color: #fffafa; background: #1d1536; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+button, input { font: inherit; }
+.page-shell { min-height: 100svh; display: grid; place-items: center; overflow: hidden; position: relative; padding: 48px 22px; background: radial-gradient(circle at 50% -10%, #725197 0, transparent 36%), linear-gradient(135deg, #171027, #382047 50%, #151e43); }
+.greeting { z-index: 1; width: min(100%, 900px); text-align: center; }
+.eyebrow { font-size: .67rem; letter-spacing: .25em; text-transform: uppercase; color: #f4c8a1; margin: 0 0 7px; }
+h1 { margin: 0; font-family: 'Marck Script', cursive; font-weight: 400; font-size: clamp(3.5rem, 9vw, 6.6rem); line-height: 1; color: #fff5e9; text-shadow: 0 3px 20px #f49a8280; }
+.wish { font-size: clamp(.88rem, 2vw, 1.05rem); line-height: 1.7; max-width: 610px; margin: 20px auto 29px; color: #f4e8f2; }
+.video-card { position: relative; overflow: hidden; width: min(100%, 390px); margin-inline: auto; border: 1px solid #ffffff44; border-radius: 21px; box-shadow: 0 25px 70px #070312a6, 0 0 0 8px #ffffff0a; background: #0c0817; aspect-ratio: 9 / 16; }
+.video { display: block; width: 100%; height: 100%; object-fit: contain; background: #0c0817; }
+.video-placeholder { cursor: pointer; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 11px; color: #ffead4; background: radial-gradient(circle at 50% 45%, #61406f, #1c1230 65%); font-weight: 600; }
+.video-placeholder small { font-size: .72rem; font-weight: 400; color: #e1cee4; }.video-placeholder input { display: none; }
+.placeholder-icon { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; padding-left: 3px; color: #40233d; background: #ffd1a9; box-shadow: 0 5px 23px #ffccb06e; }
+.hint { font-size: .72rem; color: #d9c7d5; margin: 18px 0 22px; }.signature { font-family: 'Marck Script', cursive; font-size: 1.7rem; color: #f7dece; }.signature span { color: #f89d9b; font-family: sans-serif; font-size: 1rem; }
+.glow { position: absolute; border-radius: 50%; filter: blur(2px); opacity: .55; }.glow-one { width: 330px; height: 330px; background: #d97a9b; top: -180px; left: -120px; }.glow-two { width: 260px; height: 260px; background: #5c87d8; right: -110px; bottom: -130px; }.confetti { position: absolute; top: 8%; left: 0; width: 100%; word-spacing: clamp(15px, 5vw, 80px); font-size: 1.5rem; color: #f7cb91; opacity: .55; transform: rotate(-5deg); }
+@media (max-width: 540px) { .page-shell { padding: 36px 16px; }.wish { margin: 15px auto 25px; }.video-card { border-radius: 15px; } }
